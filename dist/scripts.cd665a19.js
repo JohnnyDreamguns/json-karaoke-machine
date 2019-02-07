@@ -110,7 +110,7 @@ module.exports = "/kick.a2ba9073.wav";
 module.exports = "/snare.7c5d27d5.wav";
 },{}],"samples/hihat.wav":[function(require,module,exports) {
 module.exports = "/hihat.774addd9.wav";
-},{}],"js/scripts2.js":[function(require,module,exports) {
+},{}],"js/scripts.js":[function(require,module,exports) {
 require('../samples/kick.wav');
 
 require('../samples/snare.wav');
@@ -243,7 +243,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52002" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49395" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -385,5 +385,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["../../.nvm/versions/node/v11.9.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/scripts2.js"], null)
-//# sourceMappingURL=/scripts2.c3e8876c.map
+},{}]},{},["../../.nvm/versions/node/v11.9.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/scripts.js"], null)
+//# sourceMappingURL=/scripts.cd665a19.map
