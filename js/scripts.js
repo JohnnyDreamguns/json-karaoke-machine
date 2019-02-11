@@ -1,3 +1,9 @@
+const kick = require('/samples/kick.wav');
+const snare = require('/samples/snare.wav');
+const hihat = require('/samples/hihat.wav');
+const hihat2 = require('/samples/hihat2.wav');
+const cymbal = require('/samples/cy.wav');
+
 var audioContext = null;
 var unlocked = false;
 var isPlaying = false;      // Are we currently playing?
@@ -177,11 +183,11 @@ function init(){
     bufferLoader = new BufferLoader(
         audioContext,
         [
-          '/kick.wav',
-          '/snare.wav',
-          '/hihat.wav',
-          '/hihat2.wav',
-          '/cy.wav'
+          kick,
+          snare,
+          hihat,
+          hihat2,
+          cymbal
         ],
         finishedLoading
         );
