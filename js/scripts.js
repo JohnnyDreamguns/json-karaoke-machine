@@ -10,6 +10,7 @@ window.addEventListener("load", () => { init(songData); });
 const playAnchor = document.querySelector(".play");
 playAnchor.addEventListener("click", play);
 
+
 //              _,.,
 //            ,'   ,'
 //           /   ,'

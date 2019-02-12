@@ -3,7 +3,7 @@ import samples from "./samples";
 import types from "./sound-types";
 
 let songData = [];
-const tempo = 120;
+let tempo = 120;
 let numberOfBars = 0;
 let audioContext = null;
 let unlocked = false;
@@ -16,13 +16,13 @@ const noteResolution = 0;
 const notesInQueue = [];
 let timerWorker = null;
 let samplesBuffer = null;
-let gainNode = null;
-
+let secondsPerBeat = null;
 
 export const init = (data) => {
   songData = data;
-  numberOfBars = songData.length;
+  numberOfBars = songData.drums.length;
   audioContext = new AudioContext();
+  secondsPerBeat = 60.0 / tempo;
   const buffLoader = createBuffLoader();
   buffLoader.load();
   initTimerWorker();
@@ -84,7 +84,7 @@ const playSilentBuffer = () => {
 }
 
 const nextNote = () => {
-  var secondsPerBeat = 60.0 / tempo; 
+  secondsPerBeat = 60.0 / tempo; 
   nextNoteTime += 0.25 * secondsPerBeat; 
 
   currentNote++; // Advance the beat number, wrap to zero
@@ -99,31 +99,21 @@ const scheduleNote = (beatNumber, time) => {
   if (noteResolution == 1 && beatNumber % 2) return;
   if (noteResolution == 2 && beatNumber % 4) return; 
 
-  let osc = audioContext.createOscillator();
-  osc.type = 'sawtooth';
-  var gainNode = audioContext.createGain();
-  gainNode.gain.value = 0.08;
-  osc.connect(gainNode);
-  gainNode.connect(audioContext.destination);
+  if(songData.drums[beatNumber].length > 0) playDrums(songData.drums[beatNumber], time);
+  
+  if(songData.bass[beatNumber].length > 0) playOscillatorNote(songData.bass[beatNumber], time);
 
-  if (beatNumber % 4 === 0){ // beat 0 == high pitch
-    osc.frequency.value = 100;
-    osc.start( time );
-    osc.stop( time + 0.15);
-  }
-
-  if(songData[beatNumber].length == 0) return;
-  playSoundGroup(songData[beatNumber], time);
+  if(songData.polySynth[beatNumber].length > 0) playOscillatorNote(songData.polySynth[beatNumber], time);
 }
 
-const playSoundGroup = (listOfSounds, time) => {
+const playDrums = (listOfDrumsToPlay, time) => {
   const kick = samplesBuffer[0];
   const snare = samplesBuffer[1];
   const hihat = samplesBuffer[2];
   const hihat2 = samplesBuffer[3];
   const cymbal = samplesBuffer[4];
 
-  listOfSounds.forEach((sound) => {
+  listOfDrumsToPlay.forEach(sound => {
     if(sound.type == types.KICK) playSound(kick, time);
     if(sound.type == types.SNARE) playSound(snare, time);
     if(sound.type == types.HIHAT) playSound(hihat, time);
@@ -131,6 +121,35 @@ const playSoundGroup = (listOfSounds, time) => {
     if(sound.type == types.CYMBAL) playSound(cymbal, time);
   });
 }
+
+const playOscillatorNote = (listOfNotes, time) => {
+
+  listOfNotes.forEach(noteToPlay => {
+    let noteFreq = getNoteFreq(noteToPlay);
+    let duration = getDuration(noteToPlay);
+
+    let osc = audioContext.createOscillator();
+    osc.type = 'sawtooth';
+    var gainNode = audioContext.createGain();
+    gainNode.gain.value = 0.08;
+    osc.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    osc.frequency.value = noteFreq;
+    osc.start( time );
+    osc.stop( time + duration);
+
+  });
+}
+
+const getNoteFreq = (noteData) => {
+  if(!noteData.hasOwnProperty('octave')) return noteData.note;
+  else return noteData.note * Math.pow(2, noteData.octave)
+};
+
+const getDuration = (noteToPlay) => {
+  return secondsPerBeat * noteToPlay.duration * 0.25;
+};
 
 const scheduler = () => {
   // while there are notes that will need to play before the next interval,
@@ -140,3 +159,10 @@ const scheduler = () => {
     nextNote();
   }
 }
+
+// Control tempo
+const tempoControl = document.querySelector('#tempo');
+
+tempoControl.addEventListener('input', function() {
+  tempo = this.value;
+}, false);

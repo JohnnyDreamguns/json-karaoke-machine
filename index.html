@@ -8,9 +8,13 @@
     <meta name="author" content="SitePoint" />
   </head>
   <body>
-    <button class="play" data-playing="false" role="switch" aria-checked="false">
-      Play
-    </button>
+
+    <button class="play" data-playing="false" role="switch" aria-checked="false">Play</button>
+
+    <p>
+      <label for="tempo">Tempo</label>
+      <input type="range" id="tempo" min="70" max="250" value="120" step="1">
+    </p>
 
     <script src="//cwilso.github.io/AudioContext-MonkeyPatch/AudioContextMonkeyPatch.js"></script>
     <script src="js/scripts.js"></script>
