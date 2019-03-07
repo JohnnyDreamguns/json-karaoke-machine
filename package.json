@@ -1,44 +1,27 @@
 {
-  "name": "parcel-react-example",
+  "name": "web-karaoke",
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development parcel index.html ",
     "build": "cross-env NODE_ENV=production parcel build index.html --no-minify --public-url /"
-  },
-  "dependencies": {
-    "autoprefixer": "^7.2.1",
-    "babel-preset-react-app": "^3.1.0",
-    "parcel-bundler": "latest",
-    "react": "^16.8.3",
-    "react-dom": "^16.2.0",
-    "react-redux": "^6.0.1",
-    "redux": "^4.0.1"
-  },
-  "postcss": {
-    "modules": false,
-    "plugins": {
-      "autoprefixer": {
-        "browsers": [
-          ">1%",
-          "last 4 versions",
-          "Firefox ESR",
-          "not ie < 9"
-        ],
-        "flexbox": "no-2009"
-      }
-    }
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-jest": "^24.1.0",
-    "cross-env": "^5.1.1",
-    "jest": "^24.1.0",
-    "react-test-renderer": "^16.8.3"
   },
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js",
       "\\.(css|less)$": "<rootDir>/assetsTransformer.js"
     }
+  },
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.3.0",
+    "cross-env": "^5.2.0",
+    "jest": "^24.3.0",
+    "react-test-renderer": "^16.8.4"
   }
 }
