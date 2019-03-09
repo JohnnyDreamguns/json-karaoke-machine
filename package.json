@@ -3,7 +3,8 @@
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=development parcel index.html ",
-    "build": "cross-env NODE_ENV=production parcel build index.html --no-minify --public-url /"
+    "build": "cross-env NODE_ENV=production parcel build index.html --no-minify --public-url /",
+    "test": "jest"
   },
   "jest": {
     "moduleNameMapper": {
@@ -12,14 +13,19 @@
     }
   },
   "dependencies": {
+    "jquery": "^3.3.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
     "babel-core": "^6.26.3",
-    "babel-jest": "^24.3.0",
+    "babel-jest": "^24.3.1",
     "cross-env": "^5.2.0",
     "jest": "^24.3.0",
     "react-test-renderer": "^16.8.4"
