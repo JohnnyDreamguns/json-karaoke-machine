@@ -102,6 +102,10 @@ h2{
 }
 
 @media only screen and (min-width: 992px){
+  .instrument .json{
+    order: 2;
+  }
+
   .tempo-control{
     margin-right: 50px;
   }
