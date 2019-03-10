@@ -7,7 +7,7 @@ const Drums = ({
   <section className="bg-primary text-center instrument">
     <h2>Drums</h2>
     <div className="json-display">
-      <JSONFormatter json={data[beatNumber]} noOfBreaks={2}></JSONFormatter>
+      <JSONFormatter data={data} beatNumber={beatNumber} noOfBreaks={2}></JSONFormatter>
       <div>
         <img src={require('/img/m4K8gog.png')} className="img-fluid" alt="" />
       </div>

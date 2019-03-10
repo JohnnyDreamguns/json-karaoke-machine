@@ -7,7 +7,7 @@ const Bass = ({
   <section className="features instrument">
     <h2>Bass</h2>
     <div className="json-display">
-      <JSONFormatter json={data[beatNumber]} noOfBreaks={3}></JSONFormatter>
+      <JSONFormatter data={data} beatNumber={beatNumber} noOfBreaks={3}></JSONFormatter>
       <div>
         <img src={require('/img/promars.jpg')} className="img-fluid" alt="" />
       </div>
