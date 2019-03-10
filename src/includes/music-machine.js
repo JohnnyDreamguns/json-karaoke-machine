@@ -46,7 +46,7 @@ const initTimerWorker = () => {
   timerWorker.onmessage = function(e) {
     if (e.data == "tick") {
       scheduler();
-    } else console.log("message: " + e.data);
+    }
   };
   timerWorker.postMessage({ interval: lookahead });
 }

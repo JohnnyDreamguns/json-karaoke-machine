@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for web-karaoke/src/includes/music-machine.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">web-karaoke/src/includes</a> music-machine.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">26.23% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>32/122</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/38</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.56% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">29.36% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>32/109</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import bufferLoader from "../includes/buffer-loader";
+import samples from "../data/samples";
+import types from "../data/sound-types";
+&nbsp;
+let songData = [];
+let tempo = 120;
+let numberOfBars = 0;
+let audioContext = null;
+let unlocked = false;
+let isPlaying = false;
+let currentNote = null;
+const lookahead = 25.0; 
+const scheduleAheadTime = 0.1;
+let nextNoteTime = 0.0;
+const noteResolution = 0;
+const notesInQueue = [];
+let timerWorker = null;
+let samplesBuffer = null;
+let secondsPerBeat = null;
+let setBeatNumber = null; 
+&nbsp;
+export const init = <span class="fstat-no" title="function not covered" >(d</span>ata, callbacks) =&gt; {
+<span class="cstat-no" title="statement not covered" >  if(songData.length == 0){</span>
+<span class="cstat-no" title="statement not covered" >    songData = data;</span>
+<span class="cstat-no" title="statement not covered" >    setBeatNumber = callbacks.setBeatNumber;</span>
+<span class="cstat-no" title="statement not covered" >    numberOfBars = songData.drums.length;</span>
+<span class="cstat-no" title="statement not covered" >    audioContext = new AudioContext();</span>
+<span class="cstat-no" title="statement not covered" >    secondsPerBeat = 60.0 / tempo;</span>
+    const buffLoader = <span class="cstat-no" title="statement not covered" >createBuffLoader();</span>
+<span class="cstat-no" title="statement not covered" >    buffLoader.load();</span>
+<span class="cstat-no" title="statement not covered" >    initTimerWorker();</span>
+  }
+}
+&nbsp;
+const createBuffLoader = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >  return new bufferLoader(</span>
+    audioContext,
+    [samples.kick, samples.snare, samples.hihat, samples.hihat2, samples.cymbal],
+    finishedLoading
+  );
+}
+&nbsp;
+const initTimerWorker = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >  timerWorker = new Worker("metronomeworker.js");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  timerWorker.onmessage = <span class="fstat-no" title="function not covered" >fu</span>nction(e) {</span>
+<span class="cstat-no" title="statement not covered" >    if (e.data == "tick") {</span>
+<span class="cstat-no" title="statement not covered" >      scheduler();</span>
+    } else <span class="cstat-no" title="statement not covered" >console.log("message: " + e.data);</span>
+  };
+<span class="cstat-no" title="statement not covered" >  timerWorker.postMessage({ interval: lookahead });</span>
+}
+&nbsp;
+const finishedLoading = <span class="fstat-no" title="function not covered" >(b</span>ufferList) =&gt; {
+<span class="cstat-no" title="statement not covered" >  samplesBuffer = bufferList;</span>
+}
+&nbsp;
+const playSound = <span class="fstat-no" title="function not covered" >(b</span>uffer, time) =&gt; {
+  var source = <span class="cstat-no" title="statement not covered" >audioContext.createBufferSource();</span>
+<span class="cstat-no" title="statement not covered" >  source.buffer = buffer;</span>
+<span class="cstat-no" title="statement not covered" >  source.connect(audioContext.destination);</span>
+<span class="cstat-no" title="statement not covered" >  if (!source.start) <span class="cstat-no" title="statement not covered" >source.start = source.noteOn;</span></span>
+<span class="cstat-no" title="statement not covered" >  source.start(time);</span>
+}
+&nbsp;
+export const play = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >  if (!unlocked) <span class="cstat-no" title="statement not covered" >playSilentBuffer();</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  isPlaying = !isPlaying;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (isPlaying) {</span>
+<span class="cstat-no" title="statement not covered" >    currentNote = 0;</span>
+<span class="cstat-no" title="statement not covered" >    nextNoteTime = audioContext.currentTime;</span>
+<span class="cstat-no" title="statement not covered" >    timerWorker.postMessage("start");</span>
+<span class="cstat-no" title="statement not covered" >    return "stop";</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    timerWorker.postMessage("stop");</span>
+<span class="cstat-no" title="statement not covered" >    return "play";</span>
+  }
+}
+&nbsp;
+const playSilentBuffer = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+  var buffer = <span class="cstat-no" title="statement not covered" >audioContext.createBuffer(1, 1, 22050);</span>
+  var node = <span class="cstat-no" title="statement not covered" >audioContext.createBufferSource();</span>
+<span class="cstat-no" title="statement not covered" >  node.buffer = buffer;</span>
+<span class="cstat-no" title="statement not covered" >  node.start(0);</span>
+<span class="cstat-no" title="statement not covered" >  unlocked = true;</span>
+}
+&nbsp;
+const nextNote = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >  secondsPerBeat = 60.0 / tempo; </span>
+<span class="cstat-no" title="statement not covered" >  nextNoteTime += 0.25 * secondsPerBeat; </span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  currentNote++; </span>// Advance the beat number, wrap to zero
+<span class="cstat-no" title="statement not covered" >  setBeatNumber(currentNote);</span>
+<span class="cstat-no" title="statement not covered" >  if (currentNote == numberOfBars) {</span>
+<span class="cstat-no" title="statement not covered" >    currentNote = 0;</span>
+  }
+}
+&nbsp;
+const scheduleNote = <span class="fstat-no" title="function not covered" >(b</span>eatNumber, time) =&gt; {
+<span class="cstat-no" title="statement not covered" >  notesInQueue.push({ note: beatNumber, time: time });</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (noteResolution == 1 &amp;&amp; beatNumber % 2) <span class="cstat-no" title="statement not covered" >return;</span></span>
+<span class="cstat-no" title="statement not covered" >  if (noteResolution == 2 &amp;&amp; beatNumber % 4) <span class="cstat-no" title="statement not covered" >return; </span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(songData.drums[beatNumber].length &gt; 0) <span class="cstat-no" title="statement not covered" >playDrums(songData.drums[beatNumber], time);</span></span>
+  
+<span class="cstat-no" title="statement not covered" >  if(songData.bass[beatNumber].length &gt; 0) <span class="cstat-no" title="statement not covered" >playOscillatorNote(songData.bass[beatNumber], time);</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(songData.polySynth[beatNumber].length &gt; 0) <span class="cstat-no" title="statement not covered" >playOscillatorNote(songData.polySynth[beatNumber], time);</span></span>
+}
+&nbsp;
+const playDrums = <span class="fstat-no" title="function not covered" >(l</span>istOfDrumsToPlay, time) =&gt; {
+  const kick = <span class="cstat-no" title="statement not covered" >samplesBuffer[0];</span>
+  const snare = <span class="cstat-no" title="statement not covered" >samplesBuffer[1];</span>
+  const hihat = <span class="cstat-no" title="statement not covered" >samplesBuffer[2];</span>
+  const hihat2 = <span class="cstat-no" title="statement not covered" >samplesBuffer[3];</span>
+  const cymbal = <span class="cstat-no" title="statement not covered" >samplesBuffer[4];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  listOfDrumsToPlay.forEach(<span class="fstat-no" title="function not covered" >so</span>und =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    if(sound.type == types.KICK) <span class="cstat-no" title="statement not covered" >playSound(kick, time);</span></span>
+<span class="cstat-no" title="statement not covered" >    if(sound.type == types.SNARE) <span class="cstat-no" title="statement not covered" >playSound(snare, time);</span></span>
+<span class="cstat-no" title="statement not covered" >    if(sound.type == types.HIHAT) <span class="cstat-no" title="statement not covered" >playSound(hihat, time);</span></span>
+<span class="cstat-no" title="statement not covered" >    if(sound.type == types.HIHAT2) <span class="cstat-no" title="statement not covered" >playSound(hihat2, time);</span></span>
+<span class="cstat-no" title="statement not covered" >    if(sound.type == types.CYMBAL) <span class="cstat-no" title="statement not covered" >playSound(cymbal, time);</span></span>
+  });
+}
+&nbsp;
+const playOscillatorNote = <span class="fstat-no" title="function not covered" >(l</span>istOfNotes, time) =&gt; {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  listOfNotes.forEach(<span class="fstat-no" title="function not covered" >no</span>teToPlay =&gt; {</span>
+    let noteFreq = <span class="cstat-no" title="statement not covered" >getNoteFreq(noteToPlay);</span>
+    let duration = <span class="cstat-no" title="statement not covered" >getDuration(noteToPlay);</span>
+&nbsp;
+    let osc = <span class="cstat-no" title="statement not covered" >audioContext.createOscillator();</span>
+<span class="cstat-no" title="statement not covered" >    osc.type = 'sawtooth';</span>
+    var gainNode = <span class="cstat-no" title="statement not covered" >audioContext.createGain();</span>
+<span class="cstat-no" title="statement not covered" >    gainNode.gain.value = 0.08;</span>
+<span class="cstat-no" title="statement not covered" >    osc.connect(gainNode);</span>
+<span class="cstat-no" title="statement not covered" >    gainNode.connect(audioContext.destination);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    osc.frequency.value = noteFreq;</span>
+<span class="cstat-no" title="statement not covered" >    osc.start( time );</span>
+<span class="cstat-no" title="statement not covered" >    osc.stop( time + duration);</span>
+&nbsp;
+  });
+}
+&nbsp;
+const getNoteFreq = <span class="fstat-no" title="function not covered" >(n</span>oteData) =&gt; {
+<span class="cstat-no" title="statement not covered" >  if(!noteData.hasOwnProperty('octave')) <span class="cstat-no" title="statement not covered" >return noteData.note;</span></span>
+  else <span class="cstat-no" title="statement not covered" >return noteData.note * Math.pow(2, noteData.octave)</span>
+};
+&nbsp;
+const getDuration = <span class="fstat-no" title="function not covered" >(n</span>oteToPlay) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return secondsPerBeat * noteToPlay.duration * 0.25;</span>
+};
+&nbsp;
+const scheduler = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+  // while there are notes that will need to play before the next interval,
+  // schedule them and advance the pointer.
+<span class="cstat-no" title="statement not covered" >  while (nextNoteTime &lt; audioContext.currentTime + scheduleAheadTime) {</span>
+<span class="cstat-no" title="statement not covered" >    scheduleNote(currentNote, nextNoteTime);</span>
+<span class="cstat-no" title="statement not covered" >    nextNote();</span>
+  }
+}
+&nbsp;
+export const changeTempo = (newTempo) =&gt; {
+  tempo = newTempo
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Mar 07 2019 22:12:54 GMT+0000 (Greenwich Mean Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

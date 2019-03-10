@@ -35,6 +35,89 @@ button{
   padding:5px 25px;
 }
 
+.header-controls{
+  display:flex;
+  justify-content: space-between;
+}
+
+.tempo-control{
+  display: flex;
+  flex-direction: column;
+}
+
+.no-gutter > [class*='col-'] {
+  padding-right:0;
+  padding-left:0;
+}
+
+.json-display{
+  font-size: 16px;
+  padding: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.instrument .json-display{
+  background: #f7f7f7;
+}
+
+.instrument .json{
+  text-align: center;
+}
+
+.bg-primary .json-display{
+  background: #ffd160;
+}
+
+h2{
+  margin-bottom: 20px;
+}
+
+.json{
+  margin-bottom: 20px;
+  color: dimgray;
+}
+
+.curly-brace{
+  color: dimgray;
+}
+
+.key{
+  color: deeppink;
+}
+
+.value{
+  color:#4131ff;
+}
+
+@media only screen and (min-width: 600px){
+  .json-display{
+    font-size: 20px;
+  }
+
+  .instrument img{
+    max-width: 500px;
+  }
+}
+
+@media only screen and (min-width: 992px){
+  .tempo-control{
+    margin-right: 50px;
+  }
+
+  .json-display{
+    font-size: 26px;
+    padding: 50px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .instrument .json{
+    min-width: 550px;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
