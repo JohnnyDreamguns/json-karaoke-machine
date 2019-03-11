@@ -3,17 +3,19 @@ import {connect} from 'react-redux';
 import './App.css';
 import { init, play, changeTempo } from './includes/music-machine';
 import { default as song } from './songs/van-halen-jump';
-import { setTempo, setBeatNumber } from './actions/index';
+import { setTempo, setBeatNumber, setIsPlaying } from './actions/index';
 import Header from './components/Header';
 import SongChooser from './components/SongChooser';
 import Drums from './components/Drums';
 import Bass from './components/Bass';
 import PolySynth from './components/PolySynth';
 import Footer from './components/Footer';
+import Lyrics from './components/Lyrics';
 
 export const mapStateToProps = (state) => ({
   tempo: state.settings.tempo,
-  beatNumber: state.settings.beatNumber
+  beatNumber: state.settings.beatNumber,
+  isPlaying: state.settings.isPlaying
 });
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -23,25 +25,39 @@ export const mapDispatchToProps = (dispatch) => ({
   },
   setBeatNumber: value => {
     dispatch(setBeatNumber(value));
+  },
+  setIsPlaying: value => {
+    dispatch(setIsPlaying(value));
   }
 });
 
 export const App = ({
-  tempo, beatNumber, handleChangeTempo, setBeatNumber
+  tempo, beatNumber, handleChangeTempo, setBeatNumber, setIsPlaying, isPlaying
 }) => {
 
   useEffect(() => {
-    init(song, { setBeatNumber });
+    init(song, { setBeatNumber, setIsPlaying });
   }, []);
 
   return(
     <div className="App">
-      <Header></Header>
-      <SongChooser play={play} tempo={tempo} handleChangeTempo={handleChangeTempo}></SongChooser>
+      <Header 
+        play={play} 
+        isPlaying={isPlaying}
+        tempo={tempo}
+        handleChangeTempo={handleChangeTempo}>
+      </Header>
+      <SongChooser 
+        play={play}
+        isPlaying={isPlaying}
+        tempo={tempo}
+        handleChangeTempo={handleChangeTempo}>
+      </SongChooser>
       <Drums data={song.drums} beatNumber={beatNumber}></Drums>
       <Bass data={song.bass} beatNumber={beatNumber}></Bass>
       <PolySynth data={song.polySynth} beatNumber={beatNumber}></PolySynth>
       <Footer></Footer>
+      {isPlaying && <Lyrics beatNumber={beatNumber}></Lyrics>}
     </div>
   );
 };

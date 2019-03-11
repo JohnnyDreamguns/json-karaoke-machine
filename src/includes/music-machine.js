@@ -17,12 +17,14 @@ const notesInQueue = [];
 let timerWorker = null;
 let samplesBuffer = null;
 let secondsPerBeat = null;
-let setBeatNumber = null; 
+let setBeatNumber = null;
+let setIsPlaying = null;
 
 export const init = (data, callbacks) => {
   if(songData.length == 0){
     songData = data;
     setBeatNumber = callbacks.setBeatNumber;
+    setIsPlaying = callbacks.setIsPlaying;
     numberOfBars = songData.drums.length;
     audioContext = new AudioContext();
     secondsPerBeat = 60.0 / tempo;
@@ -67,6 +69,7 @@ export const play = () => {
   if (!unlocked) playSilentBuffer();
 
   isPlaying = !isPlaying;
+  setIsPlaying(isPlaying);
 
   if (isPlaying) {
     currentNote = 0;

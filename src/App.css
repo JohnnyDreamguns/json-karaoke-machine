@@ -40,6 +40,10 @@ button{
   justify-content: space-between;
 }
 
+.header-controls button:hover{
+  color: #333;
+}
+
 .tempo-control{
   display: flex;
   flex-direction: column;
@@ -89,6 +93,42 @@ h2{
 
 .value{
   color:#4131ff;
+}
+
+#mainNav{
+  background: #f7f7f7;
+}
+
+.navbar .container{
+  display:flex;
+  justify-content: space-between;
+}
+
+.navbar .play-controls{
+  display: flex;
+}
+
+.navbar .play-controls button{
+  background: #ffd400;
+  margin-right: 40px;
+  color: #333;
+}
+
+.navbar .tempo-control{
+  margin-right: 0;
+}
+
+.lyrics{
+  position: fixed;
+  background: #1b1b1be0;
+  height: 56px;
+  width: 100%;
+  bottom: 0;
+  color: #fff;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media only screen and (min-width: 600px){

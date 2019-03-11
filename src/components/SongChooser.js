@@ -1,19 +1,21 @@
 import React from 'react';
 
 const SongChooser = ({
-  play, tempo, handleChangeTempo
+  play, tempo, handleChangeTempo, isPlaying
 }) => (
   <header className="masthead">
     <div className="container h-100">
       <div className="row h-100">
         <div className="col-lg-7 my-auto">
           <div className="header-content mx-auto">
-            <h1 className="mb-5">Choose a song and press play to hear the sweet 
+            <h1 className="mb-5">Press play to hear the sweet 
               sounds of the Web Audio API</h1>
 
             <div className="header-controls">
               <button className="btn btn-outline btn-xl" data-playing="false" 
-                role="switch" aria-checked="false" onClick={play}>Play!</button>
+                role="switch" aria-checked="false" onClick={play}>
+                { isPlaying ? 'Stop' : 'Play!' }
+              </button>
 
               <div className="tempo-control">
                 <label forhtml="tempo">{tempo}bpm</label>
@@ -23,18 +25,10 @@ const SongChooser = ({
             </div>
           </div>
         </div>
-        {/* <div className="col-lg-5 my-auto">
-          <div className="device-container">
-            <div className="device-mockup iphone6_plus portrait white">
-              <div className="device">
-                <div className="screen">
-                </div>
-                <div className="button">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
+        <div className="col-lg-5 my-auto">
+          <h3>Now Playing: Jump by Van Halen</h3>
+          <img src={require('/img/vanhalen.jpg')} className="img-fluid" alt="" />
+        </div>
       </div>
     </div>
   </header>
