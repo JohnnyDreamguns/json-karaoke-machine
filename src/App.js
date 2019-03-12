@@ -3,7 +3,11 @@ import {connect} from 'react-redux';
 import './App.css';
 import { init, play, changeTempo } from './includes/music-machine';
 import { default as song } from './songs/van-halen-jump';
-import { setTempo, setBeatNumber, setIsPlaying } from './actions/index';
+import { 
+  setTempo, 
+  setBeatNumber,
+  setIsPlaying
+} from './actions/index';
 import Header from './components/Header';
 import SongChooser from './components/SongChooser';
 import Drums from './components/Drums';
@@ -15,7 +19,8 @@ import Lyrics from './components/Lyrics';
 export const mapStateToProps = (state) => ({
   tempo: state.settings.tempo,
   beatNumber: state.settings.beatNumber,
-  isPlaying: state.settings.isPlaying
+  isPlaying: state.settings.isPlaying,
+  currentLine: state.settings.currentLine
 });
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -57,7 +62,13 @@ export const App = ({
       <Bass data={song.bass} beatNumber={beatNumber}></Bass>
       <PolySynth data={song.polySynth} beatNumber={beatNumber}></PolySynth>
       <Footer></Footer>
-      {isPlaying && <Lyrics beatNumber={beatNumber}></Lyrics>}
+      {
+        isPlaying && 
+        <Lyrics 
+          data={song.lyrics}
+          beatNumber={beatNumber}>
+        </Lyrics>
+      }
     </div>
   );
 };

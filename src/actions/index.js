@@ -12,3 +12,8 @@ export const setIsPlaying = value => ({
   type: 'SET_IS_PLAYING',
   value
 });
+
+export const setCurrentLine = value => ({
+  type: 'SET_CURRENT_LINE',
+  value
+});
