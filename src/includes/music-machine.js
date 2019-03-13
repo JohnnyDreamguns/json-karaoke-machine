@@ -3,7 +3,7 @@ import samples from "../data/samples";
 import types from "../data/sound-types";
 
 let songData = [];
-let tempo = 120;
+let tempo = 134;
 let numberOfBars = 0;
 let audioContext = null;
 let unlocked = false;

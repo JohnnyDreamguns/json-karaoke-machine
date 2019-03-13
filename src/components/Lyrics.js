@@ -27,8 +27,6 @@ const updateCurrentLine = (data, beatNumber) => {
     }
   }
 
-  console.log(currentLine);
-
   return { __html: currentLine };
 };
 

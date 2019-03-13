@@ -2,7 +2,7 @@ import React, { Component, useEffect } from 'react';
 import {connect} from 'react-redux';
 import './App.css';
 import { init, play, changeTempo } from './includes/music-machine';
-import { default as song } from './songs/van-halen-jump';
+import { default as song } from './songs/VanHalenJump';
 import { 
   setTempo, 
   setBeatNumber,

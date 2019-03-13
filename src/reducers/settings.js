@@ -1,4 +1,4 @@
-const settings = (state = { tempo: 120, beatNumber: 0, isPlaying: false, currentLine: '' }, action) => {
+const settings = (state = { tempo: 134, beatNumber: 0, isPlaying: false, currentLine: '' }, action) => {
   switch (action.type) {
     case 'SET_TEMPO':
       return Object.assign({}, state, { tempo: action.tempo });
