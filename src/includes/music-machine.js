@@ -26,6 +26,7 @@ export const init = (data, callbacks) => {
     setBeatNumber = callbacks.setBeatNumber;
     setIsPlaying = callbacks.setIsPlaying;
     numberOfBars = songData.drums.length;
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
     audioContext = new AudioContext();
     secondsPerBeat = 60.0 / tempo;
     const buffLoader = createBuffLoader();
@@ -96,9 +97,9 @@ const nextNote = () => {
 
   currentNote++; // Advance the beat number, wrap to zero
   setBeatNumber(currentNote);
-  if (currentNote == numberOfBars) {
-    currentNote = 0;
-  }
+  // if (currentNote == numberOfBars) {
+  //   currentNote = 0;
+  // }
 }
 
 const scheduleNote = (beatNumber, time) => {
@@ -107,11 +108,14 @@ const scheduleNote = (beatNumber, time) => {
   if (noteResolution == 1 && beatNumber % 2) return;
   if (noteResolution == 2 && beatNumber % 4) return; 
 
-  if(songData.drums[beatNumber].length > 0) playDrums(songData.drums[beatNumber], time);
+  if(songData.drums[beatNumber] &&
+    songData.drums[beatNumber].length > 0) playDrums(songData.drums[beatNumber], time);
   
-  if(songData.bass[beatNumber].length > 0) playOscillatorNote(songData.bass[beatNumber], time);
+  if(songData.bass[beatNumber] && 
+    songData.bass[beatNumber].length > 0) playOscillatorNote(songData.bass[beatNumber], time);
 
-  if(songData.polySynth[beatNumber].length > 0) playOscillatorNote(songData.polySynth[beatNumber], time);
+  if(songData.polySynth[beatNumber] && 
+    songData.polySynth[beatNumber].length > 0) playOscillatorNote(songData.polySynth[beatNumber], time);
 }
 
 const playDrums = (listOfDrumsToPlay, time) => {
