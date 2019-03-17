@@ -7,3 +7,4 @@ const soundTypes = {
 }
 
 export default soundTypes;
+

@@ -1,5 +1,13 @@
+#root {
+  height: 100%;
+}
+
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  height: 100%;
+  justify-content: space-between;
 }
 
 .App-logo {
@@ -23,38 +31,38 @@
   color: #61dafb;
 }
 
-p{
+p {
   font-size: 23px;
 }
 
-button{
-  font-size:23px;
+button {
+  font-size: 23px;
   background: #ffd400;
-  border-radius:5px;
-  border:0;
-  padding:5px 25px;
+  border-radius: 5px;
+  border: 0;
+  padding: 5px 25px;
 }
 
-.header-controls{
-  display:flex;
+.header-controls {
+  display: flex;
   justify-content: space-between;
 }
 
-.header-controls button:hover{
+.header-controls button:hover {
   color: #333;
 }
 
-.tempo-control{
+.tempo-control {
   display: flex;
   flex-direction: column;
 }
 
-.no-gutter > [class*='col-'] {
-  padding-right:0;
-  padding-left:0;
+.no-gutter > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
 }
 
-.json-display{
+.json-display {
   font-size: 16px;
   padding: 30px;
   display: flex;
@@ -62,66 +70,90 @@ button{
   flex-direction: column;
 }
 
-.instrument .json-display{
+.instrument .json-display {
   background: #f7f7f7;
 }
 
-.instrument .json{
+.instrument .json {
   text-align: center;
 }
 
-.bg-primary .json-display{
+.bg-primary .json-display {
   background: #ffd160;
 }
 
-h2{
+h2 {
   margin-bottom: 20px;
 }
 
-.json{
+.json {
   margin-bottom: 20px;
   color: #313131;
 }
 
-.curly-brace{
+.curly-brace {
   color: #313131;
 }
 
-.key{
+.key {
   color: deeppink;
 }
 
-.value{
-  color:#4131ff;
+.value {
+  color: #4131ff;
 }
 
-#mainNav{
+#mainNav {
   background: #f7f7f7;
+  min-height:65px;
 }
 
-.navbar .container{
-  display:flex;
+#mainNav .navbar-brand, #mainNav .navbar-brand:hover, #mainNav .navbar-brand:focus {
+  color: #d32436;
+  font-weight: 400;
+}
+
+#mainNav nav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 300px;
+}
+
+#mainNav nav a{
+  margin: 0;
+}
+
+#mainNav nav a:nth-of-type(2), #mainNav nav a:nth-of-type(2):focus,
+#mainNav nav a:nth-of-type(2):hover{
+  color: #333;
+}
+
+.navbar .container {
+  display: flex;
   justify-content: space-between;
 }
 
-.navbar .play-controls{
+.navbar .play-controls {
   display: flex;
 }
 
-.navbar .play-controls button{
+.navbar .play-controls button, .navbar .play-controls button:focus,
+.play-controls button, .play-controls button:focus {
   background: #ffd400;
   margin-right: 40px;
   color: #333;
 }
 
-.navbar .tempo-control{
+.navbar .tempo-control {
   margin-right: 0;
 }
 
-.lyrics{
+.lyrics {
   position: fixed;
   background: #1b1b1be0;
-  height: 56px;
+  min-height: 56px;
   width: 100%;
   bottom: 0;
   color: #fff;
@@ -131,37 +163,101 @@ h2{
   justify-content: center;
 }
 
-.highlight{
-  color: deeppink;
+.highlight {
+  color: #47ccff;
 }
 
-@media only screen and (min-width: 600px){
-  .json-display{
+.about-page {
+  padding-top: 100px;
+  text-align: left;
+}
+
+.about-page p {
+  font-size: 18px;
+}
+
+.about-page h3 {
+  margin-top: 50px;
+}
+
+.song-section img:nth-of-type(1) {
+  max-width: 300px;
+}
+
+.image-collection {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.drums-section .image-collection:nth-of-type(1) img:nth-of-type(1) {
+  max-width: 350px;
+}
+.drums-section .image-collection:nth-of-type(2) img:nth-of-type(1) {
+  max-width: 220px;
+}
+.drums-section .image-collection:nth-of-type(2) img:nth-of-type(2) {
+  max-width: 470px;
+}
+.drums-section .image-collection:nth-of-type(3) img:nth-of-type(1) {
+  max-width: 400px;
+}
+
+.bass-section .image-collection:nth-of-type(1) img:nth-of-type(1) {
+  max-width: 800px;
+}
+.bass-section .image-collection:nth-of-type(2) img:nth-of-type(1) {
+  max-width: 250px;
+}
+.bass-section .image-collection:nth-of-type(3) img:nth-of-type(1) {
+  max-width: 400px;
+}
+
+.poly-section .image-collection:nth-of-type(1) img:nth-of-type(1) {
+  max-width: 1100px;
+}
+
+.lyrics-section .image-collection:nth-of-type(1) img:nth-of-type(1) {
+  max-width: 220px;
+}
+
+.drums-section img,
+.bass-section img,
+.poly-section img {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .json-display {
     font-size: 20px;
   }
 
-  .instrument img{
+  .instrument img {
     max-width: 500px;
   }
 }
 
-@media only screen and (min-width: 992px){
-  .instrument .json{
+@media only screen and (min-width: 992px) {
+  .instrument .json {
     order: 2;
   }
 
-  .tempo-control{
+  .tempo-control {
     margin-right: 50px;
   }
 
-  .json-display{
+  .json-display {
     font-size: 26px;
     padding: 50px;
     flex-direction: row;
     align-items: center;
   }
 
-  .instrument .json{
+  .instrument .json {
     min-width: 550px;
   }
 }

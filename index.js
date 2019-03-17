@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import App from "./src/App";
+import About from "./src/About";
 import reducers from "./src/reducers";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 const store = createStore(
   reducers,
@@ -12,7 +14,12 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={App}/>
+        <Route exact path='/about' component={About}/>
+      </Switch>
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );

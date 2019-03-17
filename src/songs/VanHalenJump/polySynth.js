@@ -1,18 +1,11 @@
 import notes from '../../data/note-frequencies';
 
-
-
-
-
-
-
-
 export default [
   [], 
   [], 
   [], 
   [], 
-  [{ note: notes.G, octave: 1, duration: 1 }, { note: notes.B, octave: 1, duration: 1 }, { note: notes.D, octave: 2, duration: 1 }], //4
+  [{ note: notes.G, octave: 1, duration: 1 }, { note: notes.B, octave: 1, duration: 1 }, { note: notes.D, octave: 2, duration: 1 }],
   [], 
   [], 
   [], 

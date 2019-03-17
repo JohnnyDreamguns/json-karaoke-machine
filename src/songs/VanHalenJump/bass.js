@@ -1,12 +1,5 @@
 import notes from '../../data/note-frequencies';
 
-
-
-
-
-
-
-
 export default [
   [{ note: notes.C, octave: -1, duration: 1 }, { note: notes.C, octave: -2, duration: 1 }], 
   [], 

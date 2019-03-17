@@ -62,7 +62,6 @@ const playSound = (buffer, time) => {
   var source = audioContext.createBufferSource();
   source.buffer = buffer;
   source.connect(audioContext.destination);
-  if (!source.start) source.start = source.noteOn;
   source.start(time);
 }
 
