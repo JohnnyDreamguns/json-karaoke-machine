@@ -13,6 +13,7 @@
     }
   },
   "dependencies": {
+    "includes": "0.0.7",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
@@ -27,6 +28,7 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^24.3.1",
     "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
     "jest": "^24.3.0",
     "react-test-renderer": "^16.8.4"
   }

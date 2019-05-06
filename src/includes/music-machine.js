@@ -1,10 +1,10 @@
 import bufferLoader from "../includes/buffer-loader";
 import samples from "../data/samples";
 import types from "../data/sound-types";
+import notes from '../data/note-frequencies';
 
 let songData = [];
 let tempo = 134;
-let numberOfBars = 0;
 let audioContext = null;
 let unlocked = false;
 let isPlaying = false;
@@ -25,7 +25,6 @@ export const init = (data, callbacks) => {
     songData = data;
     setBeatNumber = callbacks.setBeatNumber;
     setIsPlaying = callbacks.setIsPlaying;
-    numberOfBars = songData.drums.length;
     var AudioContext = window.AudioContext || window.webkitAudioContext;
     audioContext = new AudioContext();
     secondsPerBeat = 60.0 / tempo;
@@ -169,6 +168,52 @@ const scheduler = () => {
     scheduleNote(currentNote, nextNoteTime);
     nextNote();
   }
+}
+
+export const playKick = () => {
+  const kick = samplesBuffer[0];
+  playSound(kick, 0);
+}
+
+export const playSnare = () => {
+  const snare = samplesBuffer[1];
+  playSound(snare, 0);
+}
+
+export const playSingleNote = () => {
+  let osc = audioContext.createOscillator();
+  osc.type = 'sawtooth';
+  var gainNode = audioContext.createGain();
+  gainNode.gain.value = 0.08;
+  osc.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+
+  osc.frequency.value = 130.8;
+  osc.start();
+  
+  setTimeout(() => {
+    osc.stop();
+  }, 1000);
+}
+
+export const playChord = () => {
+  const chord = [392, 493.9, 293.7];
+
+  chord.forEach(freq => {
+    let osc = audioContext.createOscillator();
+    osc.type = 'sawtooth';
+    var gainNode = audioContext.createGain();
+    gainNode.gain.value = 0.08;
+    osc.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    osc.frequency.value = freq;
+    osc.start();
+    
+    setTimeout(() => {
+      osc.stop();
+    }, 1000);
+  });
 }
 
 export const changeTempo = (newTempo) => {
