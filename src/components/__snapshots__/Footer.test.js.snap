@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly 1`] = `
+<footer>
+  <div
+    className="container"
+  >
+    <p>
+      © JSON Karaoke Machine 2019. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+`;

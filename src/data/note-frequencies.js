@@ -11,6 +11,6 @@ const noteFrequencies = {
   A: 440,
   ASharp: 466.2,
   B: 493.9
-}
+};
 
 export default noteFrequencies;

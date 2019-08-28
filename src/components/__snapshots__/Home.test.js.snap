@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App renders correctly 1`] = `
+exports[`Home renders correctly 1`] = `
 <div
   className="App"
 >
@@ -11,12 +11,25 @@ exports[`App renders correctly 1`] = `
     <div
       className="container"
     >
-      <a
-        className="navbar-brand js-scroll-trigger"
-        href="/"
-      >
-        JSON Karaoke Machine
-      </a>
+      <nav>
+        <a
+          className="navbar-brand js-scroll-trigger"
+          href="/"
+          onClick={[Function]}
+        >
+          JSON Karaoke Machine
+        </a>
+        <span>
+          |
+        </span>
+        <a
+          className="navbar-brand js-scroll-trigger"
+          href="/about"
+          onClick={[Function]}
+        >
+          About
+        </a>
+      </nav>
       <div
         className="play-controls"
       >
@@ -27,7 +40,7 @@ exports[`App renders correctly 1`] = `
           onClick={[Function]}
           role="switch"
         >
-          Play!
+          Stop
         </button>
         <div
           className="tempo-control"
@@ -35,14 +48,17 @@ exports[`App renders correctly 1`] = `
           <label
             forhtml="tempo"
           >
+            120
             bpm
           </label>
           <input
             id="tempo"
             max="250"
             min="70"
+            onChange={[MockFunction]}
             step="1"
             type="range"
+            value={120}
           />
         </div>
       </div>
@@ -78,7 +94,7 @@ exports[`App renders correctly 1`] = `
                 onClick={[Function]}
                 role="switch"
               >
-                Play!
+                Stop
               </button>
               <div
                 className="tempo-control"
@@ -86,14 +102,17 @@ exports[`App renders correctly 1`] = `
                 <label
                   forhtml="tempo"
                 >
+                  120
                   bpm
                 </label>
                 <input
                   id="tempo"
                   max="250"
                   min="70"
+                  onChange={[MockFunction]}
                   step="1"
                   type="range"
+                  value={120}
                 />
               </div>
             </div>
@@ -133,7 +152,7 @@ exports[`App renders correctly 1`] = `
         <div
           dangerouslySetInnerHTML={
             Object {
-              "__html": "[<br><br>]",
+              "__html": "[<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"type\\":</span> <span class=\\"value\\">\\"snare\\"</span> <span class=\\"curly-brace\\">}</span><br>]",
             }
           }
         />
@@ -166,7 +185,7 @@ exports[`App renders correctly 1`] = `
         <div
           dangerouslySetInnerHTML={
             Object {
-              "__html": "[<br><br><br>]",
+              "__html": "[<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">261.6</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">-1</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">1</span> <span class=\\"curly-brace\\">}</span>,<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">261.6</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">-2</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">1</span> <span class=\\"curly-brace\\">}</span><br>]",
             }
           }
         />
@@ -226,5 +245,16 @@ exports[`App renders correctly 1`] = `
       </p>
     </div>
   </footer>
+  <div
+    className="lyrics"
+  >
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "",
+        }
+      }
+    />
+  </div>
 </div>
 `;

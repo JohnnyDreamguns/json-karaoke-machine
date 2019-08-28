@@ -1,27 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import App from "./src/App";
-import About from "./src/About";
-import reducers from "./src/reducers";
+import 'babel-polyfill';
+import ReactDOM from 'react-dom';
+import React from 'react';
+import { Provider } from 'react-redux';
+import Home from './src/containers/Home';
+import About from './src/containers/About';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
-const store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import { store } from './src/store';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route exact path='/' component={App}/>
-        <Route exact path='/about' component={About}/>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
       </Switch>
     </BrowserRouter>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // Hot Module Replacement

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drums renders correctly 1`] = `
+<section
+  className="bg-primary text-center instrument"
+>
+  <h2>
+    Drums
+  </h2>
+  <div
+    className="json-display"
+  >
+    <div
+      className="json"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "[<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"type\\":</span> <span class=\\"value\\">\\"snare\\"</span> <span class=\\"curly-brace\\">}</span><br>]",
+          }
+        }
+      />
+    </div>
+    <div>
+      <img
+        alt=""
+        className="img-fluid"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
+      />
+    </div>
+  </div>
+</section>
+`;

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lyrics first beat 1`] = `
+<div
+  className="lyrics"
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Lyrics look ahead for next line 1`] = `
+<div
+  className="lyrics"
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Lyrics render the next line 1`] = `
+<div
+  className="lyrics"
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`Lyrics renders correctly 1`] = `
+<div
+  className="lyrics"
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<span class=\\"highlight\\">I get </span>up ",
+      }
+    }
+  />
+</div>
+`;

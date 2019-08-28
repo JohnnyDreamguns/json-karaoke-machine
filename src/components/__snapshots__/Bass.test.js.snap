@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bass renders correctly 1`] = `
+<section
+  className="features instrument"
+>
+  <h2>
+    Bass
+  </h2>
+  <div
+    className="json-display"
+  >
+    <div
+      className="json"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "[<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">261.6</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">-1</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">1</span> <span class=\\"curly-brace\\">}</span>,<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">261.6</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">-2</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">1</span> <span class=\\"curly-brace\\">}</span><br>]",
+          }
+        }
+      />
+    </div>
+    <div>
+      <img
+        alt=""
+        className="img-fluid"
+        src={
+          Object {
+            "process": [Function],
+          }
+        }
+      />
+    </div>
+  </div>
+</section>
+`;

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSONFormatter renders correctly 1`] = `
+<div
+  className="json"
+>
+  <div
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "[<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">392</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">1</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">2.5</span> <span class=\\"curly-brace\\">}</span>,<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">493.9</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">1</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">2.5</span> <span class=\\"curly-brace\\">}</span>,<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">293.7</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">2</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">2.5</span> <span class=\\"curly-brace\\">}</span><br>]",
+      }
+    }
+  />
+</div>
+`;

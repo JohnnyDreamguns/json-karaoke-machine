@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<nav
+  className="navbar navbar-expand-lg navbar-light fixed-top"
+  id="mainNav"
+>
+  <div
+    className="container"
+  >
+    <nav>
+      <a
+        className="navbar-brand js-scroll-trigger"
+        href="/"
+        onClick={[Function]}
+      >
+        JSON Karaoke Machine
+      </a>
+      <span>
+        |
+      </span>
+      <a
+        className="navbar-brand js-scroll-trigger"
+        href="/about"
+        onClick={[Function]}
+      >
+        About
+      </a>
+    </nav>
+    <div
+      className="play-controls"
+    >
+      <button
+        aria-checked="false"
+        className="btn btn-outline btn-xl"
+        data-playing="false"
+        onClick={[MockFunction]}
+        role="switch"
+      >
+        Play!
+      </button>
+      <div
+        className="tempo-control"
+      >
+        <label
+          forhtml="tempo"
+        >
+          120
+          bpm
+        </label>
+        <input
+          id="tempo"
+          max="250"
+          min="70"
+          onChange={[MockFunction]}
+          step="1"
+          type="range"
+          value={120}
+        />
+      </div>
+    </div>
+  </div>
+</nav>
+`;

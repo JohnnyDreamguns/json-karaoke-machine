@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SongChooser renders correctly 1`] = `
+<header
+  className="masthead"
+>
+  <div
+    className="container h-100"
+  >
+    <div
+      className="row h-100"
+    >
+      <div
+        className="col-lg-7 my-auto"
+      >
+        <div
+          className="header-content mx-auto"
+        >
+          <h1
+            className="mb-5"
+          >
+            Press play to hear the sweet sounds of the Web Audio API
+          </h1>
+          <div
+            className="header-controls"
+          >
+            <button
+              aria-checked="false"
+              className="btn btn-outline btn-xl"
+              data-playing="false"
+              onClick={[MockFunction]}
+              role="switch"
+            >
+              Play!
+            </button>
+            <div
+              className="tempo-control"
+            >
+              <label
+                forhtml="tempo"
+              >
+                120
+                bpm
+              </label>
+              <input
+                id="tempo"
+                max="250"
+                min="70"
+                onChange={[MockFunction]}
+                step="1"
+                type="range"
+                value={120}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="col-lg-5 my-auto"
+      >
+        <h3>
+          Now Playing: Jump by Van Halen
+        </h3>
+        <img
+          alt=""
+          className="img-fluid"
+          src={
+            Object {
+              "process": [Function],
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</header>
+`;
