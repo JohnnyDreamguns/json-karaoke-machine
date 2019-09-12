@@ -218,9 +218,7 @@ exports[`About renders correctly 1`] = `
           }
         />
       </div>
-      <button
-        onClick={[MockFunction]}
-      >
+      <button>
         Play Bass Note
       </button>
     </div>

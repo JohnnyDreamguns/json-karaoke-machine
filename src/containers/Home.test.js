@@ -1,5 +1,6 @@
 import 'babel-polyfill';
-import { mapStateToProps, mapDispatchToProps } from './Home';
+import { mapStateToProps, mapDispatchToProps, initHomePage } from './Home';
+import * as musicMachine from '../includes/music-machine';
 
 const mockState = {
   settings: {
@@ -11,11 +12,6 @@ const mockState = {
   }
 };
 
-const mockDispatchMethods = {
-  handleChangeTempo: () => {},
-  setBeatNumber: () => {}
-};
-
 const mockEvent = {
   target: {
     value: 100
@@ -23,19 +19,26 @@ const mockEvent = {
 };
 
 describe('Home', () => {
+  describe('initHomePage', () => {
+    it('should call init method when called', () => {
+      musicMachine.init = jest.fn();
+      initHomePage();
+      expect(musicMachine.init.mock.calls.length).toBe(1);
+    });
+  });
+
   describe('mapStateToProps', () => {
     it('to return the correct state', () => {
-      expect(JSON.stringify(mapStateToProps(mockState))).toEqual(
-        JSON.stringify(mockState.settings)
-      );
+      const props = mapStateToProps(mockState);
+      expect(JSON.stringify(props)).toEqual(JSON.stringify(mockState.settings));
+      expect(typeof props.initHomePage).toBe('function');
     });
   });
 
   describe('mapDispatchToProps', () => {
     it('to return the correct result', () => {
-      expect(JSON.stringify(mapDispatchToProps())).toEqual(
-        JSON.stringify(mockDispatchMethods)
-      );
+      const props = mapDispatchToProps();
+      expect(typeof props.handleChangeTempo).toBe('function');
     });
   });
 

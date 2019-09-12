@@ -1,7 +1,6 @@
 import { SamplesBuffer } from './samples-buffer';
 import { Context } from './audio-context';
 import { Metronome } from './metronome/index';
-import { store } from '../store';
 import {
   setIsPlaying,
   setBeatNumber,
@@ -9,83 +8,87 @@ import {
   setNextBeatTime,
   setUnlocked
 } from '../actions/index';
-import types from '../data/sound-types';
 import { showError } from './error-handler';
+import types from '../data/sound-types';
+import notes from '../data/note-frequencies';
+
+export let dispatch;
+export let getState;
+let audioContext, metronome, samplesBuffer;
+
+// Fetch data from the redux store
+const state = name => getState().settings[name];
 
 // Set up song data, audio context and metronome
-export const init = async songData => {
-  if (getState('IsInitialised')) return;
-  store.dispatch(setIsInitialised(true));
+export const init = async (songData, d, gs) => {
+  dispatch = d;
+  getState = gs;
 
-  const context = Context.getInstance();
-  const metronome = Metronome.getInstance();
-  const buffer = await SamplesBuffer.getInstance();
+  if (state('IsInitialised')) return;
 
-  if (!context || !metronome || !buffer) {
+  await setUpDependencies();
+
+  if (!audioContext || !metronome || !samplesBuffer || !dispatch || !getState) {
     showError('Error reported, sorry for the inconvenience');
     return;
   }
 
+  dispatch(setIsInitialised(true));
   configureMetronome(songData);
 };
 
-// Fetch data from the redux store
-const getState = name => {
-  return store.getState().settings[name];
-};
+export const setUpDependencies = async () => ({
+  audioContext: (audioContext = Context.getInstance()),
+  metronome: (metronome = Metronome.getInstance()),
+  samplesBuffer: (samplesBuffer = await SamplesBuffer.getInstance())
+});
 
 // The metronome trigges the clock ticks
-const configureMetronome = songData => {
-  const metronome = Metronome.getInstance();
-
-  metronome.onmessage = e => {
-    if (e.data == 'tick') {
-      doTick(songData);
-    }
-  };
+export const configureMetronome = songData => {
+  metronome.onmessage = onMetronomeMessage(songData);
 
   const lookAhead = 25.0;
   metronome.postMessage({ interval: lookAhead });
 };
 
-// Using timing data from the metronome, sounds are triggered when the next beat is due
-const doTick = songData => {
-  const audioContext = Context.getInstance();
-  const scheduleAheadTime = 0.1;
-  const nextBeatTime = getState('nextBeatTime');
-
-  if (audioContext.currentTime + scheduleAheadTime > nextBeatTime) {
-    triggerSounds(songData, nextBeatTime);
-    calculateNextBeatTime();
-    incrementBeat();
+export const onMetronomeMessage = songData => e => {
+  if (e.data == 'tick') {
+    doTick(
+      songData,
+      state('tempo'),
+      state('nextBeatTime'),
+      state('beatNumber')
+    );
   }
 };
 
-const calculateNextBeatTime = () => {
-  store.dispatch(
-    setNextBeatTime(
-      getState('nextBeatTime') + 0.25 * (60.0 / getState('tempo'))
-    )
-  );
+// Using timing data from the metronome, sounds are triggered when the next beat is due
+export const doTick = (songData, tempo, nextBeatTime, beatNumber) => {
+  const scheduleAheadTime = 0.1;
+
+  if (audioContext.currentTime + scheduleAheadTime > nextBeatTime) {
+    triggerSounds(songData, nextBeatTime, tempo, beatNumber);
+    calculateNextBeatTime(tempo, nextBeatTime);
+    incrementBeat(beatNumber);
+  }
 };
 
-const incrementBeat = () => {
-  store.dispatch(setBeatNumber(getState('beatNumber') + 1));
+export const calculateNextBeatTime = (tempo, nextBeatTime) => {
+  dispatch(setNextBeatTime(nextBeatTime + 0.25 * (60.0 / tempo)));
+};
+
+export const incrementBeat = beatNumber => {
+  dispatch(setBeatNumber(beatNumber + 1));
 };
 
 // Tells the metronome to start and stop
-export const togglePlay = () => {
+export const togglePlay = isPlaying => () => {
   playSilentBuffer(); // Fix for issue with Safari
+  dispatch(setIsPlaying(!isPlaying));
 
-  const audioContext = Context.getInstance();
-  const metronome = Metronome.getInstance();
-
-  const isPlaying = getState('isPlaying');
-  store.dispatch(setIsPlaying(!isPlaying));
-
-  if (getState('isPlaying')) {
-    store.dispatch(setBeatNumber(0));
-    store.dispatch(setNextBeatTime(audioContext.currentTime));
+  if (!isPlaying) {
+    dispatch(setBeatNumber(0));
+    dispatch(setNextBeatTime(audioContext.currentTime));
     metronome.postMessage('start');
   } else {
     metronome.postMessage('stop');
@@ -93,156 +96,95 @@ export const togglePlay = () => {
 };
 
 // Called every beat, triggers sounds
-const triggerSounds = (songData, time) => {
-  const beatNumber = getState('beatNumber');
-
-  // Drums
-  if (songData.drums[beatNumber] && songData.drums[beatNumber].length > 0) {
-    playDrums(songData.drums[beatNumber], time);
-  }
-
-  // Bass
-  if (songData.bass[beatNumber] && songData.bass[beatNumber].length > 0) {
-    playOscillatorNotes(songData.bass[beatNumber], time);
-  }
-
-  // PolySynth
-  if (
-    songData.polySynth[beatNumber] &&
-    songData.polySynth[beatNumber].length > 0
-  ) {
-    playOscillatorNotes(songData.polySynth[beatNumber], time);
-  }
-};
-
-// Trigger drum samples from buffered .wav audio files
-const playDrums = async (listOfDrumsToPlay, time) => {
-  const samplesBuffer = await SamplesBuffer.getInstance();
-  if (!samplesBuffer) return;
-
-  listOfDrumsToPlay.forEach(sound => {
-    if (sound.type == types.KICK) playSound(samplesBuffer[0], time);
-    if (sound.type == types.SNARE) playSound(samplesBuffer[1], time);
-  });
+export const triggerSounds = (songData, time, tempo, beatNumber) => {
+  songData.drums[beatNumber].forEach(playSample(time));
+  songData.bass[beatNumber].forEach(playNote(time, tempo));
+  songData.polySynth[beatNumber].forEach(playNote(time, tempo));
 };
 
 // Plays a buffered sample at a specified time
-const playSound = (buffer, time) => {
-  const audioContext = Context.getInstance();
-
+export const playSample = time => sound => {
   var source = audioContext.createBufferSource();
-  source.buffer = buffer;
+  source.buffer = samplesBuffer[sound.type];
   source.connect(audioContext.destination);
   source.start(time);
 };
 
-// Schedule an array of notes to be played by an oscillator
-// at specified times and durations
-const playOscillatorNotes = (listOfNotes, time) => {
-  const audioContext = Context.getInstance();
+// Schedule a note to be played by an oscillator
+// at a specified time and duration
+export const playNote = (time, tempo) => noteToPlay => {
+  const osc = audioContext.createOscillator();
+  osc.type = 'sawtooth';
 
-  listOfNotes.forEach(noteToPlay => {
-    let noteFreq = getNoteFreq(noteToPlay);
-    let duration = getDuration(noteToPlay);
-
-    let osc = audioContext.createOscillator();
-    osc.type = 'sawtooth';
-    var gainNode = audioContext.createGain();
-    gainNode.gain.value = 0.08;
-    osc.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-
-    osc.frequency.value = noteFreq;
-    osc.start(time);
-    osc.stop(time + duration);
-  });
-};
-
-// Calculate the frequency of a note based on it's octave
-const getNoteFreq = noteData => {
-  if (!noteData.hasOwnProperty('octave')) {
-    return noteData.note;
-  } else {
-    return noteData.note * Math.pow(2, noteData.octave);
-  }
-};
-
-// Calculate the duration based on the current tempo
-const getDuration = noteToPlay => {
-  return (60.0 / getState('tempo')) * noteToPlay.duration * 0.25;
-};
-
-// Methods below are used on the About page
-// ----------------------------------------
-
-// Play a kick sound
-export const playKick = async () => {
-  const samplesBuffer = await SamplesBuffer.getInstance();
-
-  const kick = samplesBuffer[0];
-  playSound(kick, 0);
-};
-
-// Play a snare sound
-export const playSnare = async () => {
-  const samplesBuffer = await SamplesBuffer.getInstance();
-  if (!samplesBuffer) return;
-
-  const snare = samplesBuffer[1];
-  playSound(snare, 0);
-};
-
-// Play a single oscillator note
-export const playSingleNote = () => {
-  const audioContext = Context.getInstance();
-
-  let osc = audioContext.createOscillator();
-  osc.type = 'triangle';
-  var gainNode = audioContext.createGain();
+  const gainNode = audioContext.createGain();
   gainNode.gain.value = 0.08;
   osc.connect(gainNode);
   gainNode.connect(audioContext.destination);
 
-  osc.frequency.value = 230.8;
-  osc.start();
-
-  setTimeout(() => {
-    osc.stop();
-  }, 1000);
+  osc.frequency.value = getNoteFreq(noteToPlay);
+  osc.start(time);
+  osc.stop(time + getDuration(noteToPlay, tempo));
 };
 
-// Play a chord of notes
-export const playChord = () => {
-  const audioContext = Context.getInstance();
-  const chord = [392, 493.9, 293.7];
+// Calculate the frequency of a note based on it's octave
+export const getNoteFreq = noteData =>
+  !noteData.hasOwnProperty('octave')
+    ? noteData.note
+    : noteData.note * Math.pow(2, noteData.octave);
 
-  chord.forEach(freq => {
-    let osc = audioContext.createOscillator();
-    osc.type = 'sawtooth';
-    var gainNode = audioContext.createGain();
-    gainNode.gain.value = 0.08;
-    osc.connect(gainNode);
-    gainNode.connect(audioContext.destination);
+// Calculate the duration based on the current tempo
+export const getDuration = (noteToPlay, tempo) =>
+  (60.0 / tempo) * noteToPlay.duration * 0.25;
 
-    osc.frequency.value = freq;
-    osc.start();
+// Methods below are used on the About page
+// ----------------------------------------
 
-    setTimeout(() => {
-      osc.stop();
-    }, 1000);
+export const playKick = () => {
+  playSample(0)({ type: types.KICK });
+};
+
+export const playSnare = () => {
+  playSample(0)({ type: types.SNARE });
+};
+
+export const playC = () => {
+  playNote(audioContext.currentTime, 120)({
+    note: notes.C,
+    octave: -1,
+    duration: 6
   });
 };
 
-// Fixes issue with Safari
-const playSilentBuffer = () => {
-  if (getState('unlocked')) return;
+export const playChord = () => {
+  const chord = [
+    {
+      note: 392,
+      octave: 0,
+      duration: 6
+    },
+    {
+      note: 493.9,
+      octave: 0,
+      duration: 6
+    },
+    {
+      note: 293.7,
+      octave: 0,
+      duration: 6
+    }
+  ];
 
-  const audioContext = Context.getInstance();
+  chord.forEach(playNote(audioContext.currentTime, 120));
+};
+
+// Fixes issue with Safari
+export const playSilentBuffer = () => {
+  if (state('unlocked')) return;
 
   var buffer = audioContext.createBuffer(1, 1, 22050);
   var node = audioContext.createBufferSource();
   node.buffer = buffer;
   node.start(0);
 
-  store.dispatch(setUnlocked(true));
+  dispatch(setUnlocked(true));
 };

@@ -5,20 +5,21 @@ import {
   init,
   playKick,
   playSnare,
-  playSingleNote,
+  playC,
   playChord
 } from '../includes/music-machine';
 import { default as song } from '../songs/VanHalenJump';
+import { store } from '../store';
 
-const initAboutPage = () => {
-  init(song);
+export const initAboutPage = () => {
+  init(song, store.dispatch, store.getState);
 };
 
 export const mapStateToProps = () => ({
   initAboutPage,
   playKick,
   playSnare,
-  playSingleNote,
+  playC,
   playChord
 });
 

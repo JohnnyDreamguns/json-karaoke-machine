@@ -1,16 +1,16 @@
 var timerID = null;
 var interval = 100;
 
-self.onmessage = e => {
+self.onmessage = function(e) {
   if (e.data == 'start') {
-    timerID = setInterval(() => {
+    timerID = setInterval(function() {
       postMessage('tick');
     }, interval);
   } else if (e.data.interval) {
     interval = e.data.interval;
     if (timerID) {
       clearInterval(timerID);
-      timerID = setInterval(() => {
+      timerID = setInterval(function() {
         postMessage('tick');
       }, interval);
     }

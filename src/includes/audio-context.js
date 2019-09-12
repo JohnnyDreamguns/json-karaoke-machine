@@ -12,6 +12,9 @@ export const Context = (() => {
         instance = createInstance();
       }
       return instance;
+    },
+    resetInstance: () => {
+      instance = undefined;
     }
   };
 })();

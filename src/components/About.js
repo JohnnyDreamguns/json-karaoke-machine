@@ -3,13 +3,7 @@ import '../styles.css';
 import Header from './Header';
 import Footer from './Footer';
 
-const About = ({
-  initAboutPage,
-  playKick,
-  playSnare,
-  playSingleNote,
-  playChord
-}) => {
+const About = ({ initAboutPage, playKick, playSnare, playC, playChord }) => {
   useEffect(() => {
     initAboutPage();
   }, []);
@@ -140,7 +134,7 @@ const About = ({
             />
           </div>
 
-          <button onClick={playSingleNote}>Play Bass Note</button>
+          <button onClick={playC}>Play Bass Note</button>
         </div>
 
         <div className="poly-section">

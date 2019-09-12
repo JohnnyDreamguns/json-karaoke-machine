@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">30% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/10</span>
+        <span class='fraction'>10/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">22.22% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/9</span>
+        <span class='fraction'>9/9</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,16 +35,16 @@
         <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">30% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/10</span>
+        <span class='fraction'>10/10</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -78,31 +78,31 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
@@ -115,26 +115,26 @@
   action
 ) =&gt; {
   switch (action.type) {
-<span class="branch-0 cbranch-no" title="branch not covered" >    case 'SET_TEMPO':</span>
-<span class="cstat-no" title="statement not covered" >      return Object.assign({}, state, { tempo: action.tempo });</span>
+    case 'SET_TEMPO':
+      return Object.assign({}, state, { tempo: action.tempo });
 &nbsp;
-<span class="branch-1 cbranch-no" title="branch not covered" >    case 'SET_BEAT_NUMBER':</span>
-<span class="cstat-no" title="statement not covered" >      return Object.assign({}, state, { beatNumber: action.value });</span>
+    case 'SET_BEAT_NUMBER':
+      return Object.assign({}, state, { beatNumber: action.value });
 &nbsp;
-<span class="branch-2 cbranch-no" title="branch not covered" >    case 'SET_IS_PLAYING':</span>
-<span class="cstat-no" title="statement not covered" >      return Object.assign({}, state, { isPlaying: action.value });</span>
+    case 'SET_IS_PLAYING':
+      return Object.assign({}, state, { isPlaying: action.value });
 &nbsp;
-<span class="branch-3 cbranch-no" title="branch not covered" >    case 'SET_CURRENT_LINE':</span>
-<span class="cstat-no" title="statement not covered" >      return Object.assign({}, state, { currentLine: action.value });</span>
+    case 'SET_CURRENT_LINE':
+      return Object.assign({}, state, { currentLine: action.value });
 &nbsp;
-<span class="branch-4 cbranch-no" title="branch not covered" >    case 'SET_IS_INITIALISED':</span>
-<span class="cstat-no" title="statement not covered" >      return Object.assign({}, state, { isInitialised: action.value });</span>
+    case 'SET_IS_INITIALISED':
+      return Object.assign({}, state, { isInitialised: action.value });
 &nbsp;
-<span class="branch-5 cbranch-no" title="branch not covered" >    case 'SET_NEXT_BEAT_TIME':</span>
-<span class="cstat-no" title="statement not covered" >      return Object.assign({}, state, { nextBeatTime: action.value });</span>
+    case 'SET_NEXT_BEAT_TIME':
+      return Object.assign({}, state, { nextBeatTime: action.value });
 &nbsp;
-<span class="branch-6 cbranch-no" title="branch not covered" >    case 'SET_UNLOCKED':</span>
-<span class="cstat-no" title="statement not covered" >      return Object.assign({}, state, { unlocked: action.value });</span>
+    case 'SET_UNLOCKED':
+      return Object.assign({}, state, { unlocked: action.value });
 &nbsp;
     default:
       return state;
@@ -148,7 +148,7 @@ export default settings;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Aug 28 2019 23:13:47 GMT+0100 (British Summer Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Sep 12 2019 22:23:41 GMT+0100 (British Summer Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

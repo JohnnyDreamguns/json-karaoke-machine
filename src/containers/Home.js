@@ -4,9 +4,10 @@ import { setTempo } from '../actions/index';
 import Home from '../components/Home';
 import { init } from '../includes/music-machine';
 import { default as song } from '../songs/VanHalenJump';
+import { store } from '../store';
 
-const initHomePage = () => {
-  init(song);
+export const initHomePage = () => {
+  init(song, store.dispatch, store.getState);
 };
 
 export const mapStateToProps = state => ({
