@@ -24,13 +24,13 @@ const Home = ({
   return (
     <div className="App">
       <Header
-        play={togglePlay}
+        play={togglePlay(isPlaying)}
         isPlaying={isPlaying}
         tempo={tempo}
         handleChangeTempo={handleChangeTempo}
       />
       <SongChooser
-        play={togglePlay}
+        play={togglePlay(isPlaying)}
         isPlaying={isPlaying}
         tempo={tempo}
         handleChangeTempo={handleChangeTempo}
