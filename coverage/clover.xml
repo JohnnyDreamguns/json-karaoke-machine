@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1568323422044" clover="3.2.0">
-  <project timestamp="1568323422044" name="All files">
-    <metrics statements="210" coveredstatements="156" conditionals="81" coveredconditionals="61" methods="76" coveredmethods="56" elements="367" coveredelements="273" complexity="0" loc="210" ncloc="210" packages="10" files="30" classes="30"/>
+<coverage generated="1568841166390" clover="3.2.0">
+  <project timestamp="1568841166390" name="All files">
+    <metrics statements="210" coveredstatements="158" conditionals="81" coveredconditionals="62" methods="76" coveredmethods="59" elements="367" coveredelements="279" complexity="0" loc="210" ncloc="210" packages="10" files="30" classes="30"/>
     <package name="json-karaoke-machine">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="assetsTransformer.js" path="/Users/johnhodgson/Repos/json-karaoke-machine/assetsTransformer.js">
@@ -156,7 +156,7 @@
       </file>
     </package>
     <package name="json-karaoke-machine.src.includes">
-      <metrics statements="111" coveredstatements="57" conditionals="27" coveredconditionals="8" methods="41" coveredmethods="21"/>
+      <metrics statements="111" coveredstatements="59" conditionals="27" coveredconditionals="9" methods="41" coveredmethods="24"/>
       <file name="audio-context.js" path="/Users/johnhodgson/Repos/json-karaoke-machine/src/includes/audio-context.js">
         <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
         <line num="1" count="6" type="stmt"/>
@@ -175,7 +175,7 @@
         <line num="4" count="1" type="stmt"/>
       </file>
       <file name="music-machine.js" path="/Users/johnhodgson/Repos/json-karaoke-machine/src/includes/music-machine.js">
-        <metrics statements="76" coveredstatements="22" conditionals="19" coveredconditionals="0" methods="23" coveredmethods="3"/>
+        <metrics statements="76" coveredstatements="24" conditionals="19" coveredconditionals="1" methods="23" coveredmethods="6"/>
         <line num="20" count="4" type="stmt"/>
         <line num="23" count="4" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
@@ -189,12 +189,12 @@
         <line num="37" count="0" type="stmt"/>
         <line num="40" count="4" type="stmt"/>
         <line num="47" count="4" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
         <line num="54" count="4" type="stmt"/>
-        <line num="55" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="56" count="0" type="stmt"/>
+        <line num="55" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="56" count="1" type="stmt"/>
         <line num="66" count="4" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>

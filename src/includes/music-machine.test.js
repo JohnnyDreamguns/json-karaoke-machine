@@ -3,7 +3,26 @@ import samples from '../data/samples';
 import * as audioContext from './audio-context';
 import * as metronome from './metronome/index';
 import * as samplesBuffer from './samples-buffer';
-import { setUpDependencies, configureMetronome } from './music-machine';
+import {
+  setUpDependencies,
+  configureMetronome,
+  onMetronomeMessage,
+  doTick,
+  rewire$doTick,
+  rewire$getState
+} from './music-machine';
+
+const musicMachine = {
+  doTick
+};
+
+function resetRewiredFunctions() {
+  rewire$doTick(musicMachine.doTick);
+}
+
+afterEach(() => {
+  resetRewiredFunctions();
+});
 
 audioContext.Context = {
   mockFuncs: {
@@ -30,7 +49,15 @@ metronome.Metronome = {
 
 samplesBuffer.SamplesBuffer = { getInstance: () => {} };
 
-afterEach(() => {});
+const mockState = {
+  settings: {
+    tempo: 120,
+    nextBeatTime: 20,
+    beatNumber: 15
+  }
+};
+
+rewire$getState(() => mockState);
 
 describe('setUpDependencies', () => {
   it('should return audio context, metronome and samplesBuffer', async () => {
@@ -50,9 +77,36 @@ describe('setUpDependencies', () => {
 });
 
 describe('configureMetronome', () => {
-  it('should ', async () => {
+  it('should set metronome.onmessage to onMetronomeMessage function', async () => {
     const dependencies = await setUpDependencies();
+
     configureMetronome();
     expect(typeof dependencies.metronome.onmessage).toBe('function');
+  });
+
+  it('should call metronome.postMessage with object containing interval', async () => {
+    const dependencies = await setUpDependencies();
+    dependencies.metronome.postMessage.mockReset();
+
+    configureMetronome();
+    expect(dependencies.metronome.postMessage.mock.calls[0][0]).toEqual({
+      interval: 25
+    });
+  });
+});
+
+describe('onMetronomeMessage', () => {
+  it('on tick event should call doTick with correct params', async () => {
+    const spy = jest.fn();
+    rewire$doTick((songData, tempo, nextBeatTime, beatNumber) =>
+      spy(songData, tempo, nextBeatTime, beatNumber)
+    );
+
+    onMetronomeMessage({ songData: 'mock!' })({ data: 'tick' });
+
+    expect(spy.mock.calls[0][0]).toEqual({ songData: 'mock!' });
+    expect(spy.mock.calls[0][1]).toEqual(120);
+    expect(spy.mock.calls[0][2]).toEqual(20);
+    expect(spy.mock.calls[0][3]).toEqual(15);
   });
 });
