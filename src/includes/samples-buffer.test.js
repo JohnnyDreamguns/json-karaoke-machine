@@ -7,20 +7,24 @@ import {
   decode,
   success,
   error,
+  createInstance,
   rewire$load,
   rewire$loadBuffer,
   rewire$decode,
   rewire$success,
-  rewire$error
+  rewire$error,
+  rewire$createInstance
 } from './samples-buffer';
 import * as audioContext from './audio-context';
+import * as errorHandler from './error-handler';
 
 const samplesBuffer = {
   load,
   loadBuffer,
   decode,
   success,
-  error
+  error,
+  createInstance
 };
 
 const mockOpen = jest.fn();
@@ -37,14 +41,16 @@ function resetRewiredFunctions() {
   rewire$decode(samplesBuffer.decode);
   rewire$success(samplesBuffer.success);
   rewire$error(samplesBuffer.error);
+  rewire$createInstance(samplesBuffer.createInstance);
 }
 
 afterEach(() => {
   mockOpen.mockReset();
   mockSend.mockReset();
-
   resetRewiredFunctions();
 });
+
+errorHandler.showError = jest.fn();
 
 describe('SamplesBuffer', () => {
   it('new instance should make call to load function with an object containing two samples', async () => {
@@ -64,6 +70,15 @@ describe('SamplesBuffer', () => {
     const instance2 = await SamplesBuffer.getInstance();
 
     expect(instance1).toBe(instance2);
+  });
+
+  it('should return an error if there is no samples buffer', () => {
+    SamplesBuffer.resetInstance();
+    rewire$createInstance(() => undefined);
+    SamplesBuffer.getInstance();
+    expect(errorHandler.showError.mock.calls[0][0]).toBe(
+      'Error reported, sorry for the inconvenience'
+    );
   });
 
   describe('load', () => {

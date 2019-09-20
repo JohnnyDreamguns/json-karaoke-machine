@@ -1,20 +1,24 @@
-export const Context = (() => {
-  let instance;
+import { showError } from './error-handler';
 
-  const createInstance = () => {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    return new AudioContext();
-  };
+let instance;
 
-  return {
-    getInstance: () => {
-      if (!instance) {
-        instance = createInstance();
-      }
-      return instance;
-    },
-    resetInstance: () => {
-      instance = undefined;
+export const createInstance = () => {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  return new AudioContext();
+};
+
+export const Context = {
+  getInstance: () => {
+    if (!instance) {
+      instance = createInstance();
     }
-  };
-})();
+    if (!instance) {
+      showError('Error reported, sorry for the inconvenience');
+      return;
+    }
+    return instance;
+  },
+  resetInstance: () => {
+    instance = undefined;
+  }
+};

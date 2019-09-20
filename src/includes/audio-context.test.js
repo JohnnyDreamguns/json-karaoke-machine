@@ -1,4 +1,16 @@
-import { Context } from './audio-context';
+import {
+  Context,
+  createInstance,
+  rewire$createInstance
+} from './audio-context';
+import * as errorHandler from './error-handler';
+
+afterEach(() => {
+  errorHandler.showError.mockReset();
+  rewire$createInstance(createInstance);
+});
+
+errorHandler.showError = jest.fn();
 
 function mockAudioContext() {
   this.mockProp = 'mock!';
@@ -32,5 +44,14 @@ describe('Context', () => {
     const instance1 = Context.getInstance();
     const instance2 = Context.getInstance();
     expect(instance1).toEqual(instance2);
+  });
+
+  it('should return an error if there is no audio context', () => {
+    Context.resetInstance();
+    rewire$createInstance(() => undefined);
+    Context.getInstance();
+    expect(errorHandler.showError.mock.calls[0][0]).toBe(
+      'Error reported, sorry for the inconvenience'
+    );
   });
 });

@@ -1,20 +1,26 @@
 import samples from '../data/samples';
 import { Context } from './audio-context';
+import { showError } from './error-handler';
 
-export const SamplesBuffer = (() => {
-  let instance;
+let instance;
 
-  const createInstance = () => load(samples).catch(console.log);
+export const createInstance = () => load(samples).catch(console.log);
 
-  return {
-    getInstance: () => {
-      if (!instance) {
-        instance = createInstance();
-      }
-      return instance;
+export const SamplesBuffer = {
+  getInstance: () => {
+    if (!instance) {
+      instance = createInstance();
     }
-  };
-})();
+    if (!instance) {
+      showError('Error reported, sorry for the inconvenience');
+      return;
+    }
+    return instance;
+  },
+  resetInstance: () => {
+    instance = undefined;
+  }
+};
 
 export const load = urlList =>
   Object.keys(urlList).reduce(

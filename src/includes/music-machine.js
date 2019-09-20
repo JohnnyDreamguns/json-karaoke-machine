@@ -24,11 +24,16 @@ export const init = async (songData, d, gs) => {
   dispatch = d;
   getState = gs;
 
+  if (!dispatch || !getState) {
+    showError('Error reported, sorry for the inconvenience');
+    return;
+  }
+
   if (state('IsInitialised')) return;
 
   await setUpDependencies();
 
-  if (!audioContext || !metronome || !samplesBuffer || !dispatch || !getState) {
+  if (!audioContext || !metronome || !samplesBuffer) {
     showError('Error reported, sorry for the inconvenience');
     return;
   }
