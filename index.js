@@ -7,10 +7,6 @@ import About from './src/containers/About';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { store } from './src/store';
 
-window.addEventListener('error', function(e) {
-  alert('ERROR');
-});
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
