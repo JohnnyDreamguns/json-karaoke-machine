@@ -21,25 +21,21 @@ const state = name => getState().settings[name];
 
 // Set up song data, audio context and metronome
 export const init = async (songData, d, gs) => {
-  dispatch = d;
-  getState = gs;
+  try {
+    dispatch = d;
+    getState = gs;
 
-  if (!dispatch || !getState) {
+    if (!dispatch || !getState) throw 'Missing dependencies';
+
+    if (state('IsInitialised')) return;
+
+    await setUpDependencies();
+
+    dispatch(setIsInitialised(true));
+    configureMetronome(songData);
+  } catch (e) {
     showError('Error reported, sorry for the inconvenience');
-    return;
   }
-
-  if (state('IsInitialised')) return;
-
-  await setUpDependencies();
-
-  if (!audioContext || !metronome || !samplesBuffer) {
-    showError('Error reported, sorry for the inconvenience');
-    return;
-  }
-
-  dispatch(setIsInitialised(true));
-  configureMetronome(songData);
 };
 
 export const setUpDependencies = async () => ({

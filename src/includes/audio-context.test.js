@@ -45,13 +45,4 @@ describe('Context', () => {
     const instance2 = Context.getInstance();
     expect(instance1).toEqual(instance2);
   });
-
-  it('should return an error if there is no audio context', () => {
-    Context.resetInstance();
-    rewire$createInstance(() => undefined);
-    Context.getInstance();
-    expect(errorHandler.showError.mock.calls[0][0]).toBe(
-      'Error reported, sorry for the inconvenience'
-    );
-  });
 });

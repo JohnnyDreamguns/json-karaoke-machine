@@ -12,10 +12,6 @@ export const Context = {
     if (!instance) {
       instance = createInstance();
     }
-    if (!instance) {
-      showError('Error reported, sorry for the inconvenience');
-      return;
-    }
     return instance;
   },
   resetInstance: () => {

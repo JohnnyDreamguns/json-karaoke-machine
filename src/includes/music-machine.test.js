@@ -154,33 +154,6 @@ describe('init', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('should show error if audio context is missing', async () => {
-    audioContext.Context = { getInstance: () => undefined };
-    await init(song, mockDispatch, () => mockState);
-
-    expect(errorHandler.showError.mock.calls[0][0]).toBe(errorText);
-
-    audioContext.Context = mockContext;
-  });
-
-  it('should show error if metronome is missing', async () => {
-    metronome.Metronome = { getInstance: () => undefined };
-    await init(song, mockDispatch, () => mockState);
-
-    expect(errorHandler.showError.mock.calls[0][0]).toBe(errorText);
-
-    metronome.Metronome = mockMetronome;
-  });
-
-  it('should show error if samples buffer is missing', async () => {
-    samplesBuffer.SamplesBuffer = { getInstance: () => undefined };
-    await init(song, mockDispatch, () => mockState);
-
-    expect(errorHandler.showError.mock.calls[0][0]).toBe(errorText);
-
-    samplesBuffer.SamplesBuffer = mockSamplesBuffer;
-  });
-
   it('should show error if dispatch function is missing', async () => {
     await init(song, undefined, () => mockState);
 

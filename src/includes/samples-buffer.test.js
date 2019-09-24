@@ -72,15 +72,6 @@ describe('SamplesBuffer', () => {
     expect(instance1).toBe(instance2);
   });
 
-  it('should return an error if there is no samples buffer', () => {
-    SamplesBuffer.resetInstance();
-    rewire$createInstance(() => undefined);
-    SamplesBuffer.getInstance();
-    expect(errorHandler.showError.mock.calls[0][0]).toBe(
-      'Error reported, sorry for the inconvenience'
-    );
-  });
-
   describe('load', () => {
     it('should return an object with keys the same name as those passed in', async () => {
       rewire$loadBuffer(() => {});
