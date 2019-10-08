@@ -14,17 +14,19 @@ You'll need npm, git and parcel installed, then run the following commands to ge
 git clone https://github.com/JohnnyDreamguns/json-karaoke-machine.git
 ```
 
+```
 cd json-karaoke-machine
+```
 
 ```
 npm install
 ```
 
+```
 npm start
+```
 
-```
 Then go to http://localhost:1234
-```
 
 ### Tests
 
