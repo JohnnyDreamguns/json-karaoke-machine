@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoSoundModal renders correctly 1`] = `
+<div>
+  <button
+    className="btn-no-sound"
+    id="btn-no-sound"
+    onClick={[Function]}
+  >
+    No Sound?
+  </button>
+  <input
+    id="isVisible"
+    type="hidden"
+    value="hidden"
+  />
+</div>
+`;

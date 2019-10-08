@@ -38,7 +38,10 @@ const formatJSON = (data, beatNumber, noOfBreaks) => {
 
 const JSONFormatter = ({ data, beatNumber, noOfBreaks }) => (
   <div className="json">
-    <div dangerouslySetInnerHTML={formatJSON(data, beatNumber, noOfBreaks)} />
+    <div
+      style={{ minHeight: '130px' }}
+      dangerouslySetInnerHTML={formatJSON(data, beatNumber, noOfBreaks)}
+    />
   </div>
 );
 

@@ -22,6 +22,7 @@
     "parcel-plugin-static-files-copy": "^2.2.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-modal": "^3.10.1",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.1.0",
     "redux": "^4.0.1",
@@ -40,7 +41,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
     "jest": "^24.3.0",
-    "parcel-bundler": "^1.12.3",
+    "parcel-bundler": "^1.12.4",
     "react-test-renderer": "^16.8.4",
     "redux-devtools-extension": "^2.13.8"
   },

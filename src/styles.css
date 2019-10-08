@@ -57,7 +57,7 @@ button {
   flex-direction: column;
 }
 
-.no-gutter > [class*="col-"] {
+.no-gutter > [class*='col-'] {
   padding-right: 0;
   padding-left: 0;
 }
@@ -105,15 +105,17 @@ h2 {
 
 #mainNav {
   background: #f7f7f7;
-  min-height:65px;
+  min-height: 65px;
 }
 
-#mainNav .navbar-brand, #mainNav .navbar-brand:hover, #mainNav .navbar-brand:focus {
+#mainNav .navbar-brand,
+#mainNav .navbar-brand:hover,
+#mainNav .navbar-brand:focus {
   color: #d32436;
   font-weight: 400;
 }
 
-#mainNav nav{
+#mainNav nav {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -121,12 +123,13 @@ h2 {
   min-width: 300px;
 }
 
-#mainNav nav a{
+#mainNav nav a {
   margin: 0;
 }
 
-#mainNav nav a:nth-of-type(2), #mainNav nav a:nth-of-type(2):focus,
-#mainNav nav a:nth-of-type(2):hover{
+#mainNav nav a:nth-of-type(2),
+#mainNav nav a:nth-of-type(2):focus,
+#mainNav nav a:nth-of-type(2):hover {
   color: #333;
 }
 
@@ -139,8 +142,10 @@ h2 {
   display: flex;
 }
 
-.navbar .play-controls button, .navbar .play-controls button:focus,
-.play-controls button, .play-controls button:focus {
+.navbar .play-controls button,
+.navbar .play-controls button:focus,
+.play-controls button,
+.play-controls button:focus {
   background: #ffd400;
   margin-right: 40px;
   color: #333;
@@ -231,6 +236,55 @@ h2 {
   width: 100%;
 }
 
+.ReactModal__Overlay {
+  z-index: 1100;
+}
+
+.no-sound-modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid rgb(232, 232, 232);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}
+
+.no-sound-modal button {
+  background: white;
+  color: #db2430;
+  font-size: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 3px 17px;
+}
+
+.no-sound-modal a {
+  color: #db2430;
+}
+
+.no-sound-modal p {
+  font-size: 17px;
+}
+
+.navbar .play-controls .btn-no-sound,
+.navbar .play-controls .btn-no-sound:focus {
+  font-size: 15px;
+  position: absolute;
+  top: 109px;
+  right: 5px;
+  margin: 0;
+  padding: 5px 10px;
+  background: #4e4e4e;
+  color: #fff;
+  border-radius: 5px;
+}
+
 @media only screen and (min-width: 600px) {
   .json-display {
     font-size: 20px;
@@ -238,6 +292,13 @@ h2 {
 
   .instrument img {
     max-width: 500px;
+  }
+}
+
+@media only screen and (min-width: 770px) {
+  .navbar .play-controls .btn-no-sound,
+  .navbar .play-controls .btn-no-sound:focus {
+    top: 69px;
   }
 }
 

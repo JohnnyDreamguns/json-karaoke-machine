@@ -33,6 +33,20 @@ exports[`Home renders correctly 1`] = `
       <div
         className="play-controls"
       >
+        <div>
+          <button
+            className="btn-no-sound"
+            id="btn-no-sound"
+            onClick={[Function]}
+          >
+            No Sound?
+          </button>
+          <input
+            id="isVisible"
+            type="hidden"
+            value="hidden"
+          />
+        </div>
         <button
           aria-checked="false"
           className="btn btn-outline btn-xl"
@@ -155,6 +169,11 @@ exports[`Home renders correctly 1`] = `
               "__html": "[<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"type\\":</span> <span class=\\"value\\">\\"snare\\"</span> <span class=\\"curly-brace\\">}</span><br>]",
             }
           }
+          style={
+            Object {
+              "minHeight": "130px",
+            }
+          }
         />
       </div>
       <div>
@@ -188,6 +207,11 @@ exports[`Home renders correctly 1`] = `
               "__html": "[<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">261.6</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">-1</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">1</span> <span class=\\"curly-brace\\">}</span>,<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">261.6</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">-2</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">1</span> <span class=\\"curly-brace\\">}</span><br>]",
             }
           }
+          style={
+            Object {
+              "minHeight": "130px",
+            }
+          }
         />
       </div>
       <div>
@@ -219,6 +243,11 @@ exports[`Home renders correctly 1`] = `
           dangerouslySetInnerHTML={
             Object {
               "__html": "[<br><br><br><br>]",
+            }
+          }
+          style={
+            Object {
+              "minHeight": "130px",
             }
           }
         />

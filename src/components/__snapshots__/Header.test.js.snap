@@ -30,6 +30,7 @@ exports[`Header renders correctly 1`] = `
     <div
       className="play-controls"
     >
+      
       <button
         aria-checked="false"
         className="btn btn-outline btn-xl"

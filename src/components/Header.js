@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NoSoundModal from './NoSoundModal';
 
 const Header = ({ play, isPlaying, tempo, handleChangeTempo }) => (
   <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -16,6 +17,7 @@ const Header = ({ play, isPlaying, tempo, handleChangeTempo }) => (
 
       {play && (
         <div className="play-controls">
+          {isPlaying ? <NoSoundModal /> : ''}
           <button
             className="btn btn-outline btn-xl"
             data-playing="false"
