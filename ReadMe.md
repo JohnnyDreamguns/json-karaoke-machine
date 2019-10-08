@@ -38,4 +38,4 @@ npm test
 
 ## Acknowledgments
 
-Thanks to Chris Wilson for his article [https://www.html5rocks.com/en/tutorials/audio/scheduling/](A tale of two clocks), this article was a massive help during development of this application
+Thanks to Chris Wilson for his article [A tale of two clocks](https://www.html5rocks.com/en/tutorials/audio/scheduling), this article was a massive help during development of this application
