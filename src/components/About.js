@@ -63,7 +63,7 @@ const About = ({ initAboutPage, playKick, playSnare, playC, playChord }) => {
           <p>Method that plays the sample using the Web Audio API</p>
           <div className="image-collection">
             <img
-              src={require('../../img/audioContext.png')}
+              src={require('../../img/audiocontext.png')}
               className="img-fluid"
               alt=""
             />
