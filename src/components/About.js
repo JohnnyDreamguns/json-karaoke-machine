@@ -54,12 +54,7 @@ const About = ({ initAboutPage, playKick, playSnare, playC, playChord }) => {
           </p>
           <div className="image-collection">
             <img
-              src={require('../../img/drums2.jpg')}
-              className="img-fluid"
-              alt=""
-            />
-            <img
-              src={require('../../img/drums3.jpg')}
+              src={require('../../img/samples.png')}
               className="img-fluid"
               alt=""
             />
@@ -68,14 +63,14 @@ const About = ({ initAboutPage, playKick, playSnare, playC, playChord }) => {
           <p>Method that plays the sample using the Web Audio API</p>
           <div className="image-collection">
             <img
-              src={require('../../img/audiocontext.png')}
+              src={require('../../img/audioContext.png')}
               className="img-fluid"
               alt=""
             />
           </div>
           <div className="image-collection">
             <img
-              src={require('../../img/drums4.jpg')}
+              src={require('../../img/playSample.png')}
               className="img-fluid"
               alt=""
             />
@@ -94,7 +89,7 @@ const About = ({ initAboutPage, playKick, playSnare, playC, playChord }) => {
             song
           </p>
           <p>
-            Similar to the bass structure it is also an array of arrays. Each
+            Similar to the drums structure it is also an array of arrays. Each
             child array contains zero or more objects that define what frequency
             note should play and for what duration
           </p>
@@ -128,7 +123,7 @@ const About = ({ initAboutPage, playKick, playSnare, playC, playChord }) => {
           </p>
           <div className="image-collection">
             <img
-              src={require('../../img/bass3.jpg')}
+              src={require('../../img/playNote.png')}
               className="img-fluid"
               alt=""
             />
@@ -163,14 +158,24 @@ const About = ({ initAboutPage, playKick, playSnare, playC, playChord }) => {
           <p>This data structure represents the lyrics of the song</p>
           <div className="image-collection">
             <img
-              src={require('../../img/lyrics1.jpg')}
+              src={require('../../img/lyrics.png')}
               className="img-fluid"
               alt=""
             />
           </div>
+
+          <h3>Acknowledgements</h3>
+          <p>
+            Thanks to Chris Wilson for his article{' '}
+            <a href="https://www.html5rocks.com/en/tutorials/audio/scheduling/">
+              A tale of two clocks
+            </a>
+            , this article was a massive help during the development of this
+            application
+          </p>
         </div>
-        <p />
       </div>
+
       <Footer />
     </div>
   );
