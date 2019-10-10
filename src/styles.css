@@ -63,7 +63,7 @@ button {
 }
 
 .json-display {
-  font-size: 16px;
+  font-size: 15px;
   padding: 30px;
   display: flex;
   justify-content: space-evenly;
@@ -294,7 +294,7 @@ section.instrument:nth-of-type(2) .json-display .json div {
 }
 
 section.instrument:nth-of-type(3) .json-display .json div {
-  min-height: 130px;
+  min-height: 150px;
 }
 
 @media only screen and (min-width: 600px) {
