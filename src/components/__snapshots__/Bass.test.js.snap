@@ -19,11 +19,6 @@ exports[`Bass renders correctly 1`] = `
             "__html": "[<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">261.6</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">-1</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">1</span> <span class=\\"curly-brace\\">}</span>,<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"note\\":</span> <span class=\\"value\\">261.6</span>, <span class=\\"key\\">\\"octave\\":</span> <span class=\\"value\\">-2</span>, <span class=\\"key\\">\\"duration\\":</span> <span class=\\"value\\">1</span> <span class=\\"curly-brace\\">}</span><br>]",
           }
         }
-        style={
-          Object {
-            "minHeight": "130px",
-          }
-        }
       />
     </div>
     <div>

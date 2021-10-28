@@ -19,11 +19,6 @@ exports[`Drums renders correctly 1`] = `
             "__html": "[<br><span class=\\"curly-brace\\">{</span>  <span class=\\"key\\">\\"type\\":</span> <span class=\\"value\\">\\"snare\\"</span> <span class=\\"curly-brace\\">}</span><br>]",
           }
         }
-        style={
-          Object {
-            "minHeight": "130px",
-          }
-        }
       />
     </div>
     <div>

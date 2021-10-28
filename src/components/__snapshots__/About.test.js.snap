@@ -103,15 +103,6 @@ exports[`About renders correctly 1`] = `
             }
           }
         />
-        <img
-          alt=""
-          className="img-fluid"
-          src={
-            Object {
-              "process": [Function],
-            }
-          }
-        />
       </div>
       <p>
         Method that plays the sample using the Web Audio API
@@ -168,7 +159,7 @@ exports[`About renders correctly 1`] = `
         The Bass data structure represents the low frequency melody of the song
       </p>
       <p>
-        Similar to the bass structure it is also an array of arrays. Each child array contains zero or more objects that define what frequency note should play and for what duration
+        Similar to the drums structure it is also an array of arrays. Each child array contains zero or more objects that define what frequency note should play and for what duration
       </p>
       <div
         className="image-collection"
@@ -275,8 +266,20 @@ exports[`About renders correctly 1`] = `
           }
         />
       </div>
+      <h3>
+        Acknowledgements
+      </h3>
+      <p>
+        Thanks to Chris Wilson for his article
+         
+        <a
+          href="https://www.html5rocks.com/en/tutorials/audio/scheduling/"
+        >
+          A tale of two clocks
+        </a>
+        , this article was a massive help during the development of this application
+      </p>
     </div>
-    <p />
   </div>
   <footer>
     <div
