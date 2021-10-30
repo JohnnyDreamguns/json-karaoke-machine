@@ -11,6 +11,6 @@ export const Metronome = (() => {
         instance = createInstance();
       }
       return instance;
-    }
+    },
   };
 })();

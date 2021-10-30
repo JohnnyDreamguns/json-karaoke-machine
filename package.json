@@ -2,11 +2,10 @@
   "name": "web-karaoke",
   "license": "MIT",
   "scripts": {
-    "start": "npm run parcel",
+    "start": "parcel index.html",
     "build": "npx parcel build index.html --no-minify --public-url /",
     "test": "jest",
-    "go": "parcel index.html & wait-on http://localhost:1234",
-    "parcel": "parcel index.html"
+    "go": "npm run start & wait-on http://localhost:1234"
   },
   "jest": {
     "moduleNameMapper": {
