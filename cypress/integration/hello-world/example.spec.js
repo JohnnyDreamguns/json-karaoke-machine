@@ -20,10 +20,19 @@ describe('json karaoke machine', () => {
     cy.visit('http://localhost:1234');
   });
 
-  it('TODO', () => {
-    cy.get('h1').should(
-      'have.text',
-      'Press play to hear the sweet sounds of the Web Audio API'
-    );
-  });
+  it(
+    'TODO',
+    {
+      retries: {
+        runMode: 0,
+        openMode: 0,
+      },
+    },
+    () => {
+      cy.get('h1').should(
+        'have.text',
+        'Press play to hear the sweet sounds of the Web Audio API'
+      );
+    }
+  );
 });
